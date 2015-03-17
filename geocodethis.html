@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="bower_components/angular/angular.js"></script>
+
+    <script>
+        var mongoose = require('mongoose');
+        var configfile = require('private');
+
+        mongoose.connect(configfile.MONGOLAB_URI, function (err) {
+            if (err) console.log('could not connect to mongodb ...'); //
+            else console.log('Successfully connected to mongodb ... ');
+        });
+
+
+        angular.module('myApp', []).controller('MyController', function ($scope) {
+            $scope.message = 'Hello World!';
+        });
+
+    </script>
+</head>
+<body>
+    <div ng-controller="MyController">
+        {{ message }}
+    </div>
+
+</body>
+</html>
